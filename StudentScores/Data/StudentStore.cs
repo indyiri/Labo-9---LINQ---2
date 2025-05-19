@@ -1,4 +1,6 @@
 ﻿using StudentScores.Entities;
+using StudentScores.Models;
+using System.Windows;
 
 namespace StudentScores.Data
 {
@@ -63,5 +65,74 @@ namespace StudentScores.Data
                 };
         }
 
+        public List<Student> studentsOrderedByName()
+        {
+            var lambda =
+                _students
+                .OrderBy(s => s.FirstName)
+                .ThenBy(s => s.LastName);
+
+            return lambda.ToList();
+        }
+
+        public Student[] AllStudents()
+        {
+            return _students.ToArray();
+        }
+
+        public IEnumerable<Student> PassedStudents
+        {
+            get
+            {
+                return _students.Where(s => s.Grade > 10);
+            }
+        }
+
+        public List<DepartmentSummary> AmountOfStudentsPerDepartment()
+        {
+            var lambda =
+                _students
+                .GroupBy(s => s.Department)
+                .Select(g => new DepartmentSummary
+                {
+                    Department = g.Key,
+                    NumberOfStudents = g.Count(),
+                    MaxGrade = g.Max(s => s.Grade)
+                });
+
+            return lambda.ToList();
+        }
+
+        public string Summary()
+        {
+            int amountOfStudents =
+                _students
+                .Count();
+
+            int lowestGrade =
+                _students
+                .Min(s => s.Grade);
+            
+            int highestGrade =
+                _students
+                .Max(s => s.Grade);
+
+            double averageGrade = 
+                _students
+                .Average(s => s.Grade);
+
+            return $"Amount of students: {amountOfStudents} \nLowest Grade: {lowestGrade}/20 \nHighest Grade: {highestGrade}/20 \nAverage Grade: {averageGrade}/20";
+        }
+
+        public int AmountOfDepartments()
+        { 
+            int amountOfDepartments =
+                _students
+                .Select(s => s.Department)
+                .Distinct()
+                .Count();
+
+            return amountOfDepartments;
+        }
     }
 }

@@ -4,12 +4,12 @@
         Title="Student Grades" Height="400" Width="600">
     <StackPanel Margin="10">
         <WrapPanel>
-            <Button Content="Toon alle studenten" Margin="5"/>
-            <Button Content="Studenten geslaagd (>12)" Margin="5"/>
-            <Button Content="Gesorteerd op voornaam" Margin="5"/>
-            <Button Content="Aantal per departement" Margin="5"/>
-            <Button Content="Samenvatting" Margin="5"/>
-            <Button Content="Aantal departementen" Margin="5"/>
+            <Button x:Name="showAllStudentsButton" Content="Toon alle studenten" Margin="5" Click="showAllStudentsButton_Click"/>
+            <Button x:Name="showStudentsThatPassedButton" Content="Studenten geslaagd (>12)" Margin="5" Click="showStudentsThatPassedButton_Click"/>
+            <Button x:Name="showStudentsOrderByNameButton" Content="Gesorteerd op voornaam" Margin="5" Click="showStudentsOrderByNameButton_Click"/>
+            <Button x:Name="showAmountOfStudentsPerDepartmentButton" Content="Aantal per departement" Margin="5" Click="showAmountOfStudentsPerDepartmentButton_Click"/>
+            <Button x:Name="showSummaryButton" Content="Samenvatting" Margin="5" Click="showSummaryButton_Click"/>
+            <Button x:Name="showAmountOfDepartmentsButton" Content="Aantal departementen" Margin="5" Click="showAmountOfDepartmentsButton_Click"/>
         </WrapPanel>
         <ListBox Name="resultListBox" Height="250" Margin="5"/>
     </StackPanel>
