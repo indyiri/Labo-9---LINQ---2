@@ -65,7 +65,11 @@ namespace StudentScores
 
         private void showSummaryButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(_store.Summary(), "Summary", MessageBoxButton.OK);
+            //MessageBox.Show(_store.Summary(), "Summary", MessageBoxButton.OK);
+            
+            Summary summary = _store.showSummary();
+            
+            MessageBox.Show($"Amount of students: {summary.NumberOfStudents} \nLowest Grade: {summary.MinGrade}/20 \nHighest Grade: {summary.MaxGrade}/20 \nAverage Grade: {summary.AvgGrade}/20");
         }
 
         private void showAmountOfDepartmentsButton_Click(object sender, RoutedEventArgs e)

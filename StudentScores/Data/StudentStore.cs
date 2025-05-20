@@ -103,25 +103,36 @@ namespace StudentScores.Data
             return lambda.ToList();
         }
 
-        public string Summary()
-        {
-            int amountOfStudents =
-                _students
-                .Count();
+        //public string Summary()
+        //{
+        //    int amountOfStudents =
+        //        _students
+        //        .Count();
 
-            int lowestGrade =
-                _students
-                .Min(s => s.Grade);
+        //    int lowestGrade =
+        //        _students
+        //        .Min(s => s.Grade);
             
-            int highestGrade =
-                _students
-                .Max(s => s.Grade);
+        //    int highestGrade =
+        //        _students
+        //        .Max(s => s.Grade);
 
-            double averageGrade = 
-                _students
-                .Average(s => s.Grade);
+        //    double averageGrade = 
+        //        _students
+        //        .Average(s => s.Grade);
 
-            return $"Amount of students: {amountOfStudents} \nLowest Grade: {lowestGrade}/20 \nHighest Grade: {highestGrade}/20 \nAverage Grade: {averageGrade}/20";
+        //    return $"Amount of students: {amountOfStudents} \nLowest Grade: {lowestGrade}/20 \nHighest Grade: {highestGrade}/20 \nAverage Grade: {averageGrade}/20";
+        //}
+
+        public Summary showSummary()
+        {
+            return new Summary
+            {
+                NumberOfStudents = _students.Count(),
+                MinGrade = _students.Min(s => s.Grade),
+                MaxGrade = _students.Max(s => s.Grade),
+                AvgGrade = _students.Average(s => s.Grade)
+            };
         }
 
         public int AmountOfDepartments()
